@@ -3,7 +3,7 @@ class CreateTutors < ActiveRecord::Migration[6.0]
     create_table :tutors do |t|
       t.string :name
       t.string :phone_number
-      t.string :specilizations
+      t.string :specializations
 
       t.timestamps
     end
