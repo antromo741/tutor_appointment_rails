@@ -1,7 +1,10 @@
 <h1>Appointment Details</h1>
-</p>
-
-
-
-
-
+<p>Student: <%= link_to @appointment.student_name, student_path(@appointment.student) %>  </p>
+<p>Tutor: <%= link_to @appointment.tutor_name, tutor_path(@appointment.tutor) %>  </p>
+<p>Location: <%= @appointment.location %>  </p>
+<p>Start Time: <%= @appointment.start_time.strftime('%b %e, %l:%M %p') %></p>
+<p>End Time: <%= @appointment.end_time.strftime('%b %e, %l:%M %p') %></p>
+<%= link_to "Edit Appointment", edit_appointment_path(@appointment) %>
+<%= form_tag(appointment_path(@appointment), method: :delete, style: 'display: inline-block;') do %>
+<%= submit_tag "Delete Appointment" %>
+<% end %>
