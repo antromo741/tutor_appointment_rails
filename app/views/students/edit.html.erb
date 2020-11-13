@@ -1,17 +1,2 @@
 <h1>Student Edit Form</h1>
-<% if @student.errors.any? %>
-<div id="erorr_explanation">
-<h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved</h2>
-<ul>
-<% @student.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-    </ul>
-</div>
-<% end%>
-
-<%= form_for @student do |f| %>
-    <%= f.label :name, "Students name?" %>
-    <%= f.text_field :name %>
-    <%= f.submit %>
-<% end %>
+<%= render partial: 'form', locals: { student: @student} %>
