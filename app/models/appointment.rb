@@ -37,4 +37,12 @@ class Appointment < ApplicationRecord
 end
 #setup a location validation
 
+  def tutor_name
+    self.tutor.name
+  end
+
+  def student_name
+    self.student.name
+  end
+
 end

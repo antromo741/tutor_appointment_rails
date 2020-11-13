@@ -1,0 +1,10 @@
+<h1>Appointments</h1>
+<button><%= link_to "Add appointment", new_appointment_path %></button>
+<% @appointments.each do |appointment| %>
+<p>
+<%= link_to appointment.student_name, student_path(appointment.
+student) %> has an appointment at <%= link_to appointment.start_time.
+strftime('%b %e, %l:%M %p'), appointment_path(appointment) %> with 
+<%= link_to appointment.tutor_name, tutor_path(appointment.tutor) %>
+</p>
+<% end %>

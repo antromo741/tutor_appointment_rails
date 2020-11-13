@@ -1,0 +1,27 @@
+<%= show_errors_for(appointment) %>
+<%= form_for appointment do |f| %>
+<p>
+    <%= f.collection_select :student_id, current_user.students, :id, :name %>
+  
+</p>
+
+<p>
+<%= f.label :tutor_id, "Tutor" %>
+<%= f.collection_select :tutor_id, Tutor.all, :id, :name %>
+</p>
+
+<p>
+    <%= f.label :location %>
+    <%= f.text_field :location%>
+</p>
+
+<p>
+  <%= f.label :start_time  %>
+  <%= f.datetime_field :start_time %>
+</p>
+<p>
+  <%= f.label :end_time  %>
+  <%= f.datetime_field :end_time %>
+</p>
+    <%= f.submit %>
+<% end %>
