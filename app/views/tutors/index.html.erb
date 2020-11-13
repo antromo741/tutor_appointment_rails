@@ -1,0 +1,7 @@
+<h1>Tutors Available</h1>
+<button><%= link_to  "Register as a Tutor", new_tutor_path %></button>
+<% @tutors.each do |tutor| %>
+
+    <p><%= link_to tutor.name, tutor_path(tutor) %></p>
+
+<% end %>
