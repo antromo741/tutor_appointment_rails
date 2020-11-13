@@ -1,14 +1,4 @@
-<% if @student.errors.any? %>
-<div id="erorr_explanation">
-<h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved</h2>
-<ul>
-<% @student.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-    </ul>
-</div>
-<% end%>
-
+<%= show_errors_for(student) %>
 <%= form_for @student do |f| %>
 <p>
     <%= f.label :name, "Students name?" %>

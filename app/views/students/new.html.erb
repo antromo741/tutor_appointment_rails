@@ -1,8 +1,2 @@
 <h1>Student Register</h1>
-<%= render partial: 'shared/errors', locals: { object: @student } %>
-
-<%= form_for @student do |f| %>
-    <%= f.label :name, "Students name?" %>
-    <%= f.text_field :name %>
-    <%= f.submit %>
-<% end %>
+<%= render partial: 'form', locals: { student: @student} %>
