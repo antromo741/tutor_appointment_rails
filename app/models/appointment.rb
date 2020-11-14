@@ -2,7 +2,8 @@ class Appointment < ApplicationRecord
   belongs_to :tutor
   belongs_to :student
   validates :start_time, :end_time, :location, presence: true
-  validate :tutor_double_booked, :student_double_booked, :ends_after_it_starts
+  validate :tutor_double_booked, :student_double_booked, if: :starts_before_it_ends?
+  validate :ends_after_it_starts
   #trying to prevent double booking 
   def tutor_double_booked
     lesson_start = self.start_time
@@ -30,12 +31,18 @@ class Appointment < ApplicationRecord
     end
   end
 
+  
+
   def ends_after_it_starts
-   if start_time > end_time
+   if !starts_before_it_ends?
     errors.add(:start_time, 'must be before the end time')
   end
 end
 #setup a location validation
+def starts_before_it_ends?
+    if start_time < end_time
+ end
+end
 
   def tutor_name
     self.tutor.name
