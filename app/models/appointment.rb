@@ -34,15 +34,14 @@ class Appointment < ApplicationRecord
   
 
   def ends_after_it_starts
-   if !starts_before_it_ends?
-    errors.add(:start_time, 'must be before the end time')
+    if !starts_before_it_ends?
+      errors.add(:start_time, 'must be before the end time')
+    end
   end
-end
-#setup a location validation
-def starts_before_it_ends?
-    if start_time < end_time
- end
-end
+
+  def starts_before_it_ends?
+    start_time < end_time
+  end
 
   def tutor_name
     self.tutor.name
