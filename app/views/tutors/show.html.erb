@@ -1,3 +1,5 @@
 <h1><%= @tutor.name %></h1>
 <h2><%= @tutor.phone_number %></h1>
 <h2><%= @tutor.specializations %></h1>
+<p><%= link_to  "Book with #{@tutor.name}", new_tutor_appointment_path(@tutor) %></p>
+<p><%= link_to  "#{@tutor.name}'s appointments", tutor_appointments_path(@tutor) %></p>

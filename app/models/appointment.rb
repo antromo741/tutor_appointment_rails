@@ -51,4 +51,10 @@ class Appointment < ApplicationRecord
     self.student.name
   end
 
+  #scope
+  def self.by_tutor(tutor)
+    where(tutor_id: tutor.id)
+  end
+
+
 end

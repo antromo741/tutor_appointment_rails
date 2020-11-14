@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :appointments
-  resources :tutors
+  resources :tutors do
+    resources :appointments, only: [:index, :new]
+  end
   resources :students do
     resources :tutors, only: [:index]
     resources :appointments, only: [:index, :new]

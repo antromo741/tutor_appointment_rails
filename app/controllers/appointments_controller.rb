@@ -4,8 +4,11 @@ class AppointmentsController < ApplicationController
 
     def index
     @student = current_user.students.find_by_id(params[:student_id])
+    @tutor = Tutor.find_by_id(params[:tutor_id])
     if @student
         @appointments = @student.appointments
+    elsif @tutor
+        @appointments = current_user.appointments.by_tutor(@tutor)
     else
         @appointments = current_user.appointments
         end
