@@ -1,13 +1,26 @@
 <%= show_errors_for(appointment) %>
 <%= form_for appointment do |f| %>
+
 <p>
-    <%= f.collection_select :student_id, current_user.students, :id, :name %>
-  
+<% if appointment.student_id %>
+<%= f.label :student_id, "Student" %>
+<%= f.hidden_field :student_id %>
+<%= appointment.student.name %>
+<% else %>
+  <%= f.label :student_id, "Student" %>
+  <%= f.collection_select :student_id, current_user.students, :id, :name %>
+  <% end %>
 </p>
 
 <p>
+<% if appointment.tutor_id %>
+<%= f.label :tutor_id, "Tutor" %>
+<%= f.hidden_field :tutor_id %>
+<%= appointment.tutor.name %>
+<% else %>
 <%= f.label :tutor_id, "Tutor" %>
 <%= f.collection_select :tutor_id, Tutor.all, :id, :name %>
+<% end %>
 </p>
 
 <p>

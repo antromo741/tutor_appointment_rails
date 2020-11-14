@@ -19,7 +19,15 @@ class AppointmentsController < ApplicationController
     end
 
     def new
+        @student = current_user.students.find_by_id(params[:student_id])
+        @tutor = Tutor.find_by_id(params[:tutor_id])
+        if @student
+           @appointment = @student.appointments.build
+        elsif @tutor
+            @appointment = @tutor.appointments.build
+        else
         @appointment = Appointment.new
+        end
     end
 
     def create
