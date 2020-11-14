@@ -56,5 +56,22 @@ class Appointment < ApplicationRecord
     where(tutor_id: tutor.id)
   end
 
+  def self.upcoming
+    where("start_time > ?", Time.now)
+  end
+
+  def self.past
+    where("start_time < ?", Time.now)
+  end
+
+  def self.most_recent
+    order(start_time: :desc)
+  end
+
+  def self.longest_ago
+    order(start_time: :asc)
+  end
+
+
 
 end

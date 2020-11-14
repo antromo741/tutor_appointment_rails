@@ -12,6 +12,7 @@ class AppointmentsController < ApplicationController
     else
         @appointments = current_user.appointments
         end
+        filter_options
     end
 
     def show
@@ -60,6 +61,20 @@ class AppointmentsController < ApplicationController
     
     def set_appointment
        @appointment = current_user.appointments.find(params[:id]) 
+    end
+    
+    #using the scopes to filter the appointments
+    def filter_options 
+        if params[:filter_by_time] == "upcoming"
+          @appointments = @appointments.upcoming
+        elsif params[:filter_by_time] == "past"
+          @appointments = @appointments.past
+        end
+        if params[:sort] == "most_recent"
+          @appointments = @appointments.most_recent
+        elsif params[:sort] == "longest_ago" 
+          @appointments = @appointments.longest_ago
+        end
     end
 
     def appointment_params
