@@ -1,8 +1,14 @@
 class AppointmentsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_appointment, only: [:show, :edit, :update, :destroy]    
+    before_action :set_appointment, only: [:show, :edit, :update, :destroy]   
+
     def index
+    @student = current_user.students.find_by_id(params[:student_id])
+    if @student
+        @appointments = @student.appointments
+    else
         @appointments = current_user.appointments
+        end
     end
 
     def show
