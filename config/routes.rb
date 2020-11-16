@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :tutors
   resources :appointments
   resources :tutors do
     resources :appointments, only: [:index, :new]
