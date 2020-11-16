@@ -10,12 +10,8 @@ class User < ApplicationRecord
 
   # validates 
   def self.from_google(uid:, email:, full_name:, avatar_url:)
-    user= User.find_or_create_by(email: email) do |u|
-      u.uid = uid
-      u.full_name = full_name
-      u.avatar_url = avatar_url
-      u.password = SecureRandom.hex
-    end
-    user.update(uid: uid, full_name: full_name, avatar_url: avatar_url)
+    create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
+   
+
   end
 end
