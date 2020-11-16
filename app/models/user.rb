@@ -10,8 +10,17 @@ class User < ApplicationRecord
 
   # validates 
   def self.from_google(uid:, email:, full_name:, avatar_url:)
-    create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
-   
-
+    if user = User.find_by(email: email)
+      user.update(uid: uid, full_name: full_name, avatar_url: avatar_url) unless user.uid.present?
+      user
+    else
+      User.create(
+        email: email,
+        uid: uid,
+        full_name: full_name,
+        avatar_url: avatar_url,
+        password: SecureRandom.hex
+      )
+    end
   end
 end
