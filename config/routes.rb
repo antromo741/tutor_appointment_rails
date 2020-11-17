@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :tutors
   resources :appointments
-  resources :tutors do
+  resources :tutors, except: [:new, :create, :edit, :update] do
     resources :appointments, only: [:index, :new]
   end
   resources :students do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'students#index', constraints: lambda { |request| request.env['warden'].user.class.name == 'User' }, as: "user_root"
   root to: 'tutor/appointments#index', constraints: lambda { |request| request.env['warden'].user.class.name == 'Tutor' }, as: "tutor_root"
-  
+  root 'students#index'
   namespace :tutor do
     resources :appointments
     resources :students
