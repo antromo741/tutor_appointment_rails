@@ -1,0 +1,22 @@
+<table>
+<thead>
+<tr>
+    <th>Student</th>
+    <th>Location</th>
+    <tr>Start time</tr>
+    <tr>End Time</tr>
+</tr>
+</thead>
+<tbody>
+
+<% @appointments.each do |appointment| %>
+<tr>
+    <td><%= appointment.student_name %></td>
+    <td><%= appointment.location %></td>
+    <td><%= appointment.start_time%></td>
+    <td><%= appointment.end_time %></td>
+</tr>
+<p></p>
+<% end %>
+</tbody>
+</table>
