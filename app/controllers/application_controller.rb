@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_number])
     end
+
+    def devise_parameter_sanitizer
+        if resource_class == Tutor
+            Tutor::ParameterSanitizer.new(Tutor, :tutor, params)
+        else
+            super
+        end
+    end
 end
