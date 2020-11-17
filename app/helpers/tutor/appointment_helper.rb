@@ -1,0 +1,2 @@
+module Tutor::AppointmentHelper
+end

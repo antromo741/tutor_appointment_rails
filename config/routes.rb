@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :appointments, only: [:index, :new]
   end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root 'students#index'
+  root to: 'students#index', constraints: lambda { |request| request.env['warden'].user.class.name == 'User'}, as: "user_root"
+  root to: 'tutor/appointments#index', constraints: lambda { |request| request.env['warden'].user.class.name == 'Tutor' }, as: "tutor_root"
+  
+  namespace :tutor do
+    resources :appointments
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
