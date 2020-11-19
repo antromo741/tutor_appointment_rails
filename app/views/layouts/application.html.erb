@@ -12,6 +12,8 @@
   <body>
     <% if request.env['warden'].user.class.name == 'Tutor' %>
       <%= render partial: 'shared/tutor_navbar' %>
+        <% elsif request.env['warden'].user.class.name == 'User' %>
+        <%= render partial: 'shared/user_navbar' %>
         <% else %>
       <%= render partial: 'shared/user_navbar' %>
     <% end %>

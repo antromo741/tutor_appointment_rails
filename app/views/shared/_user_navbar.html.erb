@@ -1,13 +1,19 @@
 <nav>
-  <%= link_to  "Students", students_url %>
-  <%= link_to 'Tutors', tutors_url %>
-  <%= link_to  "Appointments", appointments_url %>
   <% if user_signed_in? %>
+    <%= link_to "Students", students_url %>
+    <%= link_to "Tutors", tutors_url %>
+    <%= link_to  "Appointments", appointments_url %>
     <%= form_tag(destroy_user_session_path, method: :delete, style: 'display: inline-block;') do %>
       <%= submit_tag "Sign Out" %>
     <% end %>
     <% else %>
+    <p>
     <%= link_to  "Sign Up", new_user_registration_path %>
     <%= link_to  "Sign In", new_user_session_path %>
+    </p>
+    <p>
+    <%= link_to  "Sign In as a Tutor", new_tutor_session_path  %>
+    <%= link_to  "Sign up as a Tutor", new_tutor_registration_path %>
     <% end %>
+    </p>
   </nav>
