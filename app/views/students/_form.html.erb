@@ -1,8 +1,20 @@
 <%= show_errors_for(student) %>
 <%= form_for student do |f| %>
-<p>
-    <%= f.label :name, "Students name?" %>
+    <p>
+    <%= f.label :name, "What is the students Name?" %>
     <%= f.text_field :name %>
+    </p>
+    <p>
+    <%= f.label :grade, "What is the students Grade?" %>
+    <%= f.text_field :grade %>
+    </p>
+    <p>
+    <%= f.label :help_post, "Please give a breif description of what you need help with." %>
+    <%= f.text_field :help_post %>
+    </p>
+    <p>
+    <%= f.label :location, "What town do you live in?" %>
+    <%= f.text_field :location %>
     </p>
     <%= f.submit %>
 <% end %>

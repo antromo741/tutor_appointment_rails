@@ -1,4 +1,7 @@
 <h1><%= @student.name %></h1>
+<h3> Grade: <%= @student.grade %></h3>
+<h3> Help Post: <%= @student.help_post %></h3>
+<h3>Location: <%= @student.location %></h3>
 <p><%= link_to  "Book appointment with #{@student.name}", new_student_appointment_path(@student) %></p>
 <p><%= link_to  "#{@student.name}'s appointments", student_appointments_path(@student) %></p>
 <p><%= link_to  "Edit Student", edit_student_path(@student) %>

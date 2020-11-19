@@ -7,21 +7,30 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.first_or_create(email: "antromo@test.com", password: "testpass", phone_number: '(111)111-1111')
 
-s1 = user.students.find_or_create_by(name: "Romo")
-s2 = user.students.find_or_create_by(name: "Nicole")
-
-t1 = Tutor.find_or_create_by(email: "mra@a.com") do |d|
-    d.password = "cooltutor"
-    d.name = "Mr A"
-    d.phone_number = "631-111-1111" 
-    d.specializations = "Math & Physics"
+s1 = user.students.find_or_create_by(name: "Romo") do |t|
+    t.grade = "Tenth"
+    t.help_post = "Looking for help in Algebra 1"
+    t.location = "Garden City"
 end
 
-t2 = Tutor.find_or_create_by(email: "mrr@r.com") do |d|
-    d.password = "oktutor"
-    d.name = "Mr R"
-    d.phone_number = "631-111-2222"
-    d.specializations = "English & History"
+s2 = user.students.find_or_create_by(name: "Nicole") do |t|
+    t.grade = "Tenth"
+    t.help_post = "Looking for help in statistics"
+    t.location = "Hempsted"
+end
+
+t1 = Tutor.find_or_create_by(email: "mra@a.com") do |t|
+    t.password = "cooltutor"
+    t.name = "Mr A"
+    t.phone_number = "631-111-1111" 
+    t.specializations = "Math & Physics"
+end
+
+t2 = Tutor.find_or_create_by(email: "mrr@r.com") do |t|
+    t.password = "oktutor"
+    t.name = "Mr R"
+    t.phone_number = "631-111-2222"
+    t.specializations = "English & History"
 end 
 
 10.times do
