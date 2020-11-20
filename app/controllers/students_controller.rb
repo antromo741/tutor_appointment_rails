@@ -44,8 +44,8 @@ class StudentsController < ApplicationController
     def set_student
        @student = current_user.students.find(params[:id]) 
     end
-
+    # this is why my params were nt being saved properly myurutgnrtgjnrtjnthn
     def student_params
-        params.require(:student).permit(:name)
+        params.require(:student).permit(:name, :grade, :help_post, :location)
     end
 end
