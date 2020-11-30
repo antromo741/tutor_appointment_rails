@@ -2,7 +2,12 @@ class StudentsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_student, only: [:show, :edit, :update, :destroy]    
     def index
+        if params["Search Student"]
+            @students = current_user.students.search_student(params["Search Student"])
+        #render students close to input name
+        else
         @students = current_user.students
+        end
     end
 
     def show
@@ -46,6 +51,6 @@ class StudentsController < ApplicationController
     end
     # this is why my params were nt being saved properly myurutgnrtgjnrtjnthn
     def student_params
-        params.require(:student).permit(:name, :grade, :help_post, :location)
+        params.require(:student).permit(:name, :grade, :help_post, :location, :search_student )
     end
 end
