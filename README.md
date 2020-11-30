@@ -4,17 +4,17 @@ Welcome to my rails application, Tutor appointments rails.
 This is a rails web application that uses ruby(2.6.1) on rails(6.0.3).
 The application allows you to start up a server for a tutor website.
 
+* Services 
+
+Allow you to schedule appointments with many tutors and many students.
 
 * Database initialization
 
 To start the database structre
 
 -run rails db:migrate
+
 -run rails db:seed to use seeded data(optional)
-
-* Services 
-
-Allow you to schedule appointments with many tutors and many students.
 
 * Deployment instructions
 
